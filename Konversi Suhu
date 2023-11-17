@@ -1,0 +1,79 @@
+def kelvin_to_celcius(kelvin):
+    """
+    Mengkonversi suhu dari Kelvin ke Celsius.
+
+    Parameters:
+    kelvin (float): Suhu dalam Kelvin.
+
+    Returns:
+    float: Suhu dalam Celsius.
+    """
+    celsius = kelvin - 273.15
+    return celsius
+
+def celcius_to_kelvin(celsius):
+    """
+    Mengkonversi suhu dari Celsius ke Kelvin.
+
+    Parameters:
+    celsius (float): Suhu dalam Celsius.
+
+    Returns:
+    float: Suhu dalam Kelvin.
+    """
+    kelvin = celsius + 273.15
+    return kelvin
+
+def convert_to_fahrenheit(suhu, input_unit):
+    """
+    Mengkonversi suhu ke Fahrenheit dari Celsius atau Kelvin.
+
+    Parameters:
+    suhu (float): Suhu dalam Celsius atau Kelvin.
+    input_unit (str): Unit suhu yang diberikan ('C' untuk Celsius atau 'K' untuk Kelvin).
+
+    Returns:
+    float: Suhu dalam Fahrenheit.
+    """
+    if input_unit == 'K':
+        celsius = kelvin_to_celcius(suhu)
+    else:
+        celsius = suhu
+    
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit
+
+def convert_fahrenheit(suhu, output_unit):
+    """
+    Mengkonversi suhu dari Fahrenheit ke Celsius atau Kelvin.
+
+    Parameters:
+    suhu (float): Suhu dalam Fahrenheit.
+    output_unit (str): Unit suhu yang diinginkan ('C' untuk Celsius atau 'K' untuk Kelvin).
+
+    Returns:
+    float: Suhu dalam Celsius atau Kelvin.
+    """
+    celsius = (suhu - 32) * 5/9
+
+    if output_unit == 'K':
+        kelvin = celcius_to_kelvin(celsius)
+        return kelvin
+    else:
+        return celsius
+
+# Contoh penggunaan:
+# Mengkonversi 100 Kelvin ke Celsius
+print("100 Kelvin ke Celsius:", kelvin_to_celcius(100))
+
+# Mengkonversi 30 Celsius ke Kelvin
+print("30 Celsius ke Kelvin:", celcius_to_kelvin(30))
+
+# Mengkonversi 50 Celsius ke Fahrenheit
+print("50 Celsius ke Fahrenheit:", convert_to_fahrenheit(50, 'C'))
+
+# Mengkonversi 80 Fahrenheit ke Celsius
+print("80 Fahrenheit ke Celsius:", convert_fahrenheit(80, 'C'))
+
+# Mengkonversi 80 Fahrenheit ke Kelvin
+print("80 Fahrenheit ke Kelvin:", convert_fahrenheit(80, 'K'))
